@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gương điển hình | Không gian Văn hóa Hồ Chí Minh HUIT</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<header class="kvh-topbar">
+  <div class="kvh-container kvh-nav">
+    <a class="kvh-brand" href="index.html">
+      <div class="kvh-brand-mark">HCM</div>
+      <div><strong>Không gian Văn hóa Hồ Chí Minh</strong><span>Đại học Công Thương TP. Hồ Chí Minh</span></div>
+    </a>
+    <nav class="kvh-menu" id="kvhMenu"><a href="index.html" class="">Trang chủ</a><a href="dashboard.html" class="">Thống kê</a><a href="hanh-trinh.html" class="">Hành trình</a><a href="guong-dien-hinh.html" class="active">Gương điển hình</a><a href="bang-vang.html" class="">Bảng vàng</a><a href="tu-sach.html" class="">Tủ sách</a><a href="quiz.html" class="">Quiz</a></nav>
+    <button class="kvh-btn kvh-btn-soft kvh-mobile-toggle" id="kvhMobileToggle">☰</button>
+  </div>
+</header>
+<main>
+
+<section class="kvh-section">
+  <div class="kvh-container">
+    <div class="kvh-title-row"><div><div class="kvh-kicker">Lan tỏa gương sáng</div><h1 class="kvh-title">Gương điển hình HUIT</h1><p class="kvh-desc">Gallery ảnh, lightbox phóng to, nút xem danh sách và thống kê tương tác.</p></div></div>
+    <div class="kvh-honor-grid" id="kvhHonorGrid"></div>
+  </div>
+</section>
+
+</main>
+
+
+<footer class="kvh-footer">
+  <div class="kvh-footer-shell">
+    <div class="kvh-footer-inner">
+      <div class="kvh-footer-brand">
+        <div class="kvh-footer-logo">HUIT</div>
+        <div>
+          <div class="kvh-footer-title">@Bản Quyền thuộc về Đoàn Thanh niên - Hội Sinh viên Trường Đại học Công Thương TP.HCM (HUIT)</div>
+          <p class="kvh-footer-sub">Không gian Văn hóa Hồ Chí Minh số hóa, tương tác và lan tỏa giá trị học tập, rèn luyện, cống hiến của tuổi trẻ HUIT.</p>
+        </div>
+      </div>
+      <div class="kvh-footer-creator">
+        <span>Nhà sáng tạo</span>
+        <strong>Ngọc Kiên</strong>
+      </div>
+    </div>
+    <div class="kvh-footer-bottom">
+      
+      <div>© 2026 · HUIT Youth Digital Space</div>
+    </div>
+  </div>
+</footer>
+
+
+
+<div class="kvh-modal" id="kvhModal">
+  <div class="kvh-modal-card">
+    <img class="kvh-modal-cover" id="kvhModalCover" src="" alt="Ảnh minh họa">
+    <div class="kvh-modal-body">
+      <div class="kvh-modal-head">
+        <h3 class="kvh-modal-title" id="kvhModalTitle">Tiêu đề</h3>
+        <button class="kvh-close" onclick="kvhCloseModal()">×</button>
+      </div>
+      <div class="kvh-modal-text" id="kvhModalText"></div>
+      <div class="kvh-modal-gallery" id="kvhModalGallery"></div>
+      <div style="margin-top:18px" id="kvhModalAction"></div>
+    </div>
+  </div>
+</div>
+
+<script src="assets/js/main.js"></script>
+<script src="assets/js/examples.js"></script>
+</body>
+</html>

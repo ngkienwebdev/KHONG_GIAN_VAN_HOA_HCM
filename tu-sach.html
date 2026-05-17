@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tủ sách Hồ Chí Minh | Không gian Văn hóa Hồ Chí Minh HUIT</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<header class="kvh-topbar">
+  <div class="kvh-container kvh-nav">
+    <a class="kvh-brand" href="index.html">
+      <div class="kvh-brand-mark">HCM</div>
+      <div><strong>Không gian Văn hóa Hồ Chí Minh</strong><span>Đại học Công Thương TP. Hồ Chí Minh</span></div>
+    </a>
+    <nav class="kvh-menu" id="kvhMenu"><a href="index.html" class="">Trang chủ</a><a href="dashboard.html" class="">Thống kê</a><a href="hanh-trinh.html" class="">Hành trình</a><a href="guong-dien-hinh.html" class="">Gương điển hình</a><a href="bang-vang.html" class="">Bảng vàng</a><a href="tu-sach.html" class="active">Tủ sách</a><a href="quiz.html" class="">Quiz</a></nav>
+    <button class="kvh-btn kvh-btn-soft kvh-mobile-toggle" id="kvhMobileToggle">☰</button>
+  </div>
+</header>
+<main>
+
+<section class="kvh-section">
+  <div class="kvh-container">
+    <div class="kvh-title-row"><div><div class="kvh-kicker">Học liệu số</div><h1 class="kvh-title">Tủ sách Hồ Chí Minh</h1><p class="kvh-desc">Có tìm kiếm, lọc theo nhóm, modal chi tiết và link đọc thêm.</p></div></div>
+    <div class="kvh-library-controls">
+      <div class="kvh-search"><input id="kvhLibrarySearch" type="text" placeholder="🔍 Tìm tên sách, tác phẩm, tư liệu..."></div>
+      <div class="kvh-filter-group">
+        <button class="kvh-filter-btn active" data-filter="all">Tất cả</button>
+        <button class="kvh-filter-btn" data-filter="van-kien">Văn kiện</button>
+        <button class="kvh-filter-btn" data-filter="thi-ca">Thi ca</button>
+        <button class="kvh-filter-btn" data-filter="media">Tư liệu</button>
+      </div>
+    </div>
+    <div class="kvh-library-grid" id="kvhLibraryGrid"></div>
+    <div class="kvh-empty" id="kvhLibraryEmpty">Không tìm thấy tài liệu phù hợp.</div>
+  </div>
+</section>
+
+</main>
+
+
+<footer class="kvh-footer">
+  <div class="kvh-footer-shell">
+    <div class="kvh-footer-inner">
+      <div class="kvh-footer-brand">
+        <div class="kvh-footer-logo">HUIT</div>
+        <div>
+          <div class="kvh-footer-title">@Bản Quyền thuộc về Đoàn Thanh niên - Hội Sinh viên Trường Đại học Công Thương TP.HCM (HUIT)</div>
+          <p class="kvh-footer-sub">Không gian Văn hóa Hồ Chí Minh số hóa, tương tác và lan tỏa giá trị học tập, rèn luyện, cống hiến của tuổi trẻ HUIT.</p>
+        </div>
+      </div>
+      <div class="kvh-footer-creator">
+        <span>Nhà sáng tạo</span>
+        <strong>Ngọc Kiên</strong>
+      </div>
+    </div>
+    <div class="kvh-footer-bottom">
+      
+      <div>© 2026 · HUIT Youth Digital Space</div>
+    </div>
+  </div>
+</footer>
+
+
+
+<div class="kvh-modal" id="kvhModal">
+  <div class="kvh-modal-card">
+    <img class="kvh-modal-cover" id="kvhModalCover" src="" alt="Ảnh minh họa">
+    <div class="kvh-modal-body">
+      <div class="kvh-modal-head">
+        <h3 class="kvh-modal-title" id="kvhModalTitle">Tiêu đề</h3>
+        <button class="kvh-close" onclick="kvhCloseModal()">×</button>
+      </div>
+      <div class="kvh-modal-text" id="kvhModalText"></div>
+      <div class="kvh-modal-gallery" id="kvhModalGallery"></div>
+      <div style="margin-top:18px" id="kvhModalAction"></div>
+    </div>
+  </div>
+</div>
+
+<script src="assets/js/main.js"></script>
+<script src="assets/js/library.js"></script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thống kê | Không gian Văn hóa Hồ Chí Minh HUIT</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<header class="kvh-topbar">
+  <div class="kvh-container kvh-nav">
+    <a class="kvh-brand" href="index.html">
+      <div class="kvh-brand-mark">HCM</div>
+      <div><strong>Không gian Văn hóa Hồ Chí Minh</strong><span>Đại học Công Thương TP. Hồ Chí Minh</span></div>
+    </a>
+    <nav class="kvh-menu" id="kvhMenu"><a href="index.html" class="">Trang chủ</a><a href="dashboard.html" class="active">Thống kê</a><a href="hanh-trinh.html" class="">Hành trình</a><a href="guong-dien-hinh.html" class="">Gương điển hình</a><a href="bang-vang.html" class="">Bảng vàng</a><a href="tu-sach.html" class="">Tủ sách</a><a href="quiz.html" class="">Quiz</a></nav>
+    <button class="kvh-btn kvh-btn-soft kvh-mobile-toggle" id="kvhMobileToggle">☰</button>
+  </div>
+</header>
+<main>
+<section class="kvh-section">
+  <div class="kvh-container">
+    <div class="kvh-login-card" id="dashboardLogin">
+      <div class="kvh-kicker">Khu vực nội bộ</div>
+      <h1 class="kvh-title">Đăng nhập để xem thống kê</h1>
+      <p class="kvh-desc">Trang thống kê được khóa theo yêu cầu. Vui lòng nhập tài khoản được cấp.</p>
+      <div class="kvh-form-grid" style="margin-top:20px">
+        <label>Tài khoản<input id="dashboardUser" placeholder="Nhập tài khoản"></label>
+        <label>Mật khẩu<input id="dashboardPass" type="password" placeholder="Nhập mật khẩu"></label>
+      </div>
+      <p id="dashboardError" class="kvh-error"></p>
+      <button class="kvh-btn kvh-btn-primary" id="dashboardLoginBtn" style="margin-top:16px">Đăng nhập</button>
+    </div>
+
+    <div id="dashboardContent" class="hidden">
+      <div class="kvh-title-row"><div><div class="kvh-kicker">Dashboard realtime</div><h1 class="kvh-title">Trung tâm thống kê truy cập & tương tác</h1><p class="kvh-desc">Dữ liệu được cập nhật tức thời trong trình duyệt, đồng bộ giữa các tab bằng BroadcastChannel/storage event. Nếu muốn theo dõi realtime giữa nhiều thiết bị/người dùng, cần nối Firebase, Supabase hoặc backend riêng.</p></div><div style="display:flex;gap:10px;flex-wrap:wrap"><button class="kvh-btn kvh-btn-soft" onclick="kvhResetAnalytics()">Reset demo</button><button class="kvh-btn kvh-btn-soft" onclick="logoutDashboard()">Đăng xuất</button></div></div>
+      <div class="kvh-live-strip"><span class="kvh-live-dot"></span> Đang theo dõi thời gian thực trên trình duyệt hiện tại</div>
+      <div class="kvh-stats-grid">
+        <div class="kvh-stat"><div class="kvh-stat-icon">👁️</div><div class="kvh-stat-number" id="kvhTotalVisits">0</div><div class="kvh-stat-label">Tổng lượt truy cập</div><div class="kvh-stat-note">tự ghi nhận</div></div>
+        <div class="kvh-stat"><div class="kvh-stat-icon">👤</div><div class="kvh-stat-number" id="kvhUniqueUsers">0</div><div class="kvh-stat-label">Người dùng thực</div><div class="kvh-stat-note">theo thiết bị</div></div>
+        <div class="kvh-stat"><div class="kvh-stat-icon">📅</div><div class="kvh-stat-number" id="kvhTodayVisits">0</div><div class="kvh-stat-label">Lượng truy cập hôm nay</div><div class="kvh-stat-note">theo ngày</div></div>
+        <div class="kvh-stat"><div class="kvh-stat-icon">⏱️</div><div class="kvh-stat-number" id="kvhWatchTime">0p</div><div class="kvh-stat-label">Thời gian xem</div><div class="kvh-stat-note">thời gian ở trang</div></div>
+        <div class="kvh-stat"><div class="kvh-stat-icon">📰</div><div class="kvh-stat-number" id="kvhPostViews">0</div><div class="kvh-stat-label">Số lượt xem bài</div><div class="kvh-stat-note">khi mở modal</div></div>
+        <div class="kvh-stat"><div class="kvh-stat-icon">❤️</div><div class="kvh-stat-number" id="kvhInteractions">0</div><div class="kvh-stat-label">Số lượt tương tác</div><div class="kvh-stat-note">click, quiz, xem</div></div>
+        <div class="kvh-stat"><div class="kvh-stat-icon">▶️</div><div class="kvh-stat-number" id="kvhVideoViews">0</div><div class="kvh-stat-label">Lượt xem video</div><div class="kvh-stat-note">để nối video sau</div></div>
+        <div class="kvh-stat"><div class="kvh-stat-icon">🎬</div><div class="kvh-stat-number" id="kvhVideoTime">0p</div><div class="kvh-stat-label">Thời lượng xem video</div><div class="kvh-stat-note">để nối video sau</div></div>
+      </div>
+      <div class="kvh-realtime-panel" id="kvhRealtimeStatus"></div>
+    <div class="kvh-dashboard-grid">
+        <div class="kvh-card kvh-card-pad"><h3>Lượng truy cập mỗi ngày</h3><p class="kvh-desc">Biểu đồ 7 ngày gần nhất.</p><div class="kvh-chart-wrap"><canvas id="kvhTrafficChart"></canvas></div></div>
+        <div class="kvh-card kvh-card-pad"><h3>Nội dung được quan tâm</h3><p class="kvh-desc">Tự tăng khi người xem mở từng khu vực.</p><div class="kvh-bars" id="kvhContentBars"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+
+<footer class="kvh-footer">
+  <div class="kvh-footer-shell">
+    <div class="kvh-footer-inner">
+      <div class="kvh-footer-brand">
+        <div class="kvh-footer-logo">HUIT</div>
+        <div>
+          <div class="kvh-footer-title">@Bản Quyền thuộc về Đoàn Thanh niên - Hội Sinh viên Trường Đại học Công Thương TP.HCM (HUIT)</div>
+          <p class="kvh-footer-sub">Không gian Văn hóa Hồ Chí Minh số hóa, tương tác và lan tỏa giá trị học tập, rèn luyện, cống hiến của tuổi trẻ HUIT.</p>
+        </div>
+      </div>
+      <div class="kvh-footer-creator">
+        <span>Nhà sáng tạo</span>
+        <strong>Ngọc Kiên</strong>
+      </div>
+    </div>
+    <div class="kvh-footer-bottom">
+      
+      <div>© 2026 · HUIT Youth Digital Space</div>
+    </div>
+  </div>
+</footer>
+
+
+
+<div class="kvh-modal" id="kvhModal">
+  <div class="kvh-modal-card">
+    <img class="kvh-modal-cover" id="kvhModalCover" src="" alt="Ảnh minh họa">
+    <div class="kvh-modal-body">
+      <div class="kvh-modal-head">
+        <h3 class="kvh-modal-title" id="kvhModalTitle">Tiêu đề</h3>
+        <button class="kvh-close" onclick="kvhCloseModal()">×</button>
+      </div>
+      <div class="kvh-modal-text" id="kvhModalText"></div>
+      <div class="kvh-modal-gallery" id="kvhModalGallery"></div>
+      <div style="margin-top:18px" id="kvhModalAction"></div>
+    </div>
+  </div>
+</div>
+
+<script src="assets/js/main.js"></script>
+<script src="assets/js/dashboard-auth.js"></script>
+
+</body>
+</html>
